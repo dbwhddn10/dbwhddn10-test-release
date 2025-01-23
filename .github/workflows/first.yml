@@ -12,4 +12,8 @@ jobs:
       - name: Print working directory
         run: pwd
       - name: List files
-        run: ls -al
+        uses: actions/github-script@v4
+        with:
+          script: |
+            var ps = require('node:child_process');
+            console.log(ps);
