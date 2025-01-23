@@ -24,4 +24,4 @@ jobs:
             } else {
               throw new Error('`publishTag` is not define.');
             }
-            console.log(publishTag, isPublished)
+            console.log(branch == 'main', isPublished)
