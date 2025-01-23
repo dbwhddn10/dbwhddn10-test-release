@@ -18,10 +18,11 @@ jobs:
             const packageJson = require('./package.json');
             const childProcess = require('node:child_process');
             const branch = childProcess.execSync('git symbolic-ref --short HEAD');
-            const oldVersions = childProcess.execSync('npm view '+ packageJson.name +' versions');
-            if (branch == 'main' || branch == 'master') {
-              const publishTag = 'latest';
-            } else if (branch.match(/(\d+\.|)\d+/)) {
-              const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
-            }
-            console.log(oldVersions, type(oldVersions));
+            console.log(branch);
+            # const oldVersions = childProcess.execSync('npm view '+ packageJson.name +' versions');
+            # if (branch == 'main' || branch == 'master') {
+            #   const publishTag = 'latest';
+            # } else if (branch.match(/(\d+\.|)\d+/)) {
+            #   const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
+            # }
+            # console.log(oldVersions, type(oldVersions));
