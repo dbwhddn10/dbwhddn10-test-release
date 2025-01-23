@@ -16,4 +16,5 @@ jobs:
         with:
           script: |
             const childProcess = require('node:child_process');
-            console.log(childProcess.execSync);
+            const branch = childProcess.execSync('git symbolic-ref --short HEAD');
+            console.log(childProcess.execSync, branch);
