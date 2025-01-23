@@ -5,14 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Hello, GitHub Actions!'
-  pwd-ls:
-    name: PWD & LS
+  log:
+    name: Console Log
     runs-on: ubuntu-latest
     steps:
-      - name: Print working directory
-        run: pwd
-      - name: console.log
-        uses: actions/github-script@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create Release Notes
+        uses: actions/github-script@v7
         with:
           script: |
             var package = require('./package.json');
