@@ -17,4 +17,4 @@ jobs:
           script: |
             const package = require('./package.json');
             const ps = require('node:child_process');
-            console.log(ps, package, github);
+            console.log(ps, package, github, context);
