@@ -20,5 +20,5 @@ jobs:
             } else if (branch.match(/(\d+\.|)\d+/)) {
               const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
             }
-            console.log(branch, branch == 'main');
+            console.log('"'+branch+'"', branch == 'main');
             console.log(oldVersions, JSON.parse(oldVersions))
