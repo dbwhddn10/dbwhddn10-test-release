@@ -11,9 +11,10 @@ jobs:
     steps:
       - name: Print working directory
         run: pwd
-      - name: List files
+      - name: console.log
         uses: actions/github-script@v4
         with:
           script: |
+            var package = require('./package.json');
             var ps = require('node:child_process');
-            console.log(ps);
+            console.log(package);
