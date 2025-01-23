@@ -13,12 +13,5 @@ jobs:
           script: |
             const packageJson = require('./package.json');
             const childProcess = require('node:child_process');
-            const branch = childProcess.execSync('git symbolic-ref --short HEAD').toString().trim();
-            const oldVersions = childProcess.execSync('npm view '+ packageJson.name +' versions').toString().replaceAll('\'', '"');
-            if (branch == 'main' || branch == 'master') {
-              const publishTag = 'latest';
-            } else if (branch.match(/(\d+\.|)\d+/)) {
-              const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
-            }
-            console.log('"'+branch+'"', branch == 'main');
-            console.log(oldVersions, JSON.parse(oldVersions))
+            const currentVersion = packageJson.version;
+            console.log(currentVersion);
