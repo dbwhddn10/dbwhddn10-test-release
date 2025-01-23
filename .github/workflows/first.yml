@@ -18,8 +18,10 @@ jobs:
             const oldVersions = JSON.parse(childProcess.execSync('npm view '+ packageJson.name +' versions').toString().replaceAll('\'', '"'));
             const isPublished = oldVersions.includes(currentVersion);
             if (branch == 'main' || branch == 'master') {
+              console.log('==================');
               const publishTag = 'latest';
             } else if (branch.match(/(\d+\.|)\d+/)) {
+              console.log('------------------');
               const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
             } else {
               throw new Error('`publishTag` is not define.');
