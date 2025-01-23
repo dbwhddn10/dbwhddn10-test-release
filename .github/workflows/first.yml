@@ -1,10 +1,6 @@
 name: Our First Workflow
 on: push
 jobs:
-  echo:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Hello, GitHub Actions!'
   log:
     name: Console Log
     runs-on: ubuntu-latest
@@ -24,4 +20,4 @@ jobs:
             } else if (branch.match(/(\d+\.|)\d+/)) {
               const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
             }
-            console.log(branch == 'main', oldVersions, type(oldVersions));
+            console.log(branch == 'main', oldVersions, typeof oldVersions);
