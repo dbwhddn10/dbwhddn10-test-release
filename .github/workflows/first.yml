@@ -14,4 +14,14 @@ jobs:
             const packageJson = require('./package.json');
             const childProcess = require('node:child_process');
             const currentVersion = packageJson.version;
-            console.log(currentVersion);
+            const branch = childProcess.execSync('git symbolic-ref --short HEAD').toString().trim();
+            const oldVersions = JSON.parse(childProcess.execSync('npm view '+ packageJson.name +' versions').toString().replaceAll('\'', '"'));
+            const isPublished = oldVersions.includes(currentVersion);
+            if (branch == 'main' || branch == 'master') {
+              const publishTag = 'latest';
+            } else if (branch.match(/(\d+\.|)\d+/)) {
+              const publishTag = 'v'+branch.match(/(\d+\.|)\d+/)?.[0]+'-lts';
+            } else {
+              throw new Error('`publishTag` is not define.');
+            }
+            console.log(publishTag, isPublished)
