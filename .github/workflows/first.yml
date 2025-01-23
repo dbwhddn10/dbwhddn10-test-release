@@ -17,8 +17,8 @@ jobs:
           script: |
             const packageJson = require('./package.json');
             const childProcess = require('node:child_process');
-            const branch = childProcess.execSync('git symbolic-ref --short HEAD');
             console.log(childProcess.execSync);
+            # const branch = childProcess.execSync('git symbolic-ref --short HEAD');
             # const oldVersions = childProcess.execSync('npm view '+ packageJson.name +' versions');
             # if (branch == 'main' || branch == 'master') {
             #   const publishTag = 'latest';
