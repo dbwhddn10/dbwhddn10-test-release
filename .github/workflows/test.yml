@@ -10,7 +10,8 @@ jobs:
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - id: step3
         uses: actions/github-script@v7
-        with:
+        env:
           super_secret: ${{ secrets.AAA }}
+        with:
           script: |
-            console.log(super_secret);
+            console.log(env);
