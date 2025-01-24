@@ -3,6 +3,8 @@ on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
+    environment:
+      name: os
     steps:
       - id: step1
         run: echo "test=hello" >> "$GITHUB_OUTPUT"
