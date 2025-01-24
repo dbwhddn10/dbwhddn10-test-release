@@ -14,4 +14,4 @@ jobs:
           super_secret: ${{ secrets.AAA }}
         with:
           script: |
-            console.log(env);
+            console.log(envs);
