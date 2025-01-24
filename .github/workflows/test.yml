@@ -9,6 +9,8 @@ jobs:
       - id: step2
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - id: step3
-        with: # Set the secret as an input
-          super_secret: ${{ secrets.AAAA }}
-        run: echo "$super_secret"
+        uses: actions/github-script@v7
+        with:
+          super_secret: ${{ secrets.AAA }}
+          script: |
+            console.log(super_secret);
