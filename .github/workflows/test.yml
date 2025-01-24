@@ -3,23 +3,8 @@ on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
-    outputs:
-      output_1: ${{ steps.step1.outputs.test }}
-      output_2: ${{ steps.step2.outputs.test }}
-      output_3: ${{ steps.step3.outputs.test }}
+    with: # Set the secret as an input
+      super_secret: ${{ secrets.AAA }}
     steps:
       - id: step1
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"
-      - id: step2
-        run: echo "test=world" >> "$GITHUB_OUTPUT"
-      - id: step3
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const childProcess = require('node:child_process');
-            childProcess.execSync('echo "test=awesome" >> "$GITHUB_OUTPUT"');
-  job2:
-    runs-on: ubuntu-latest
-    needs: [job1]
-    steps:
-      - run: echo '${{ toJSON(needs.job1.outputs) }}'
+        run: echo "$super_secret"
