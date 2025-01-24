@@ -12,4 +12,4 @@ jobs:
         env:
           MY_VAR: ${{ secrets.AAA }}
         run: |
-          echo $MY_VAR
+          [ $MY_VAR = "aaa" ] && echo "true"
