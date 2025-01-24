@@ -1,4 +1,4 @@
-name: Our First Workflow
+name: Our Test Workflow
 on: push
 jobs:
   job1:
