@@ -1,4 +1,4 @@
-name: NPM Publish
+name: NPM Publish ~!
 on: push
 jobs:
   prepare:
@@ -44,7 +44,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 21
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://npm.pkg.github.com/
       - run: npm i
       - run: npm run build
       - run: cp ./package.json ./package-lock.json ./dist/
