@@ -24,4 +24,3 @@ jobs:
             } else {
               throw new Error('`publishTag` is not define.');
             }
-            childProcess.execSync('').toString().trim();
