@@ -25,5 +25,5 @@ jobs:
               throw new Error('`publishTag` is not define.');
             }
             if (!isPublished) {
-              childProcess.execSync('npm publish ./dist --access public --tag '+ package.publishTag);
+              // childProcess.execSync('npm publish ./dist --access public --tag '+ package.publishTag);
             }
