@@ -10,6 +10,6 @@ jobs:
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - id: step3
         env:
-          MY_VAR: ${{ secrets.AAA }}
+          MY_VAR: ${{ vars.AAA }}
         run: |
-          [ "aaa" = "aaa" ] && echo "true"
+          echo $MY_VAR
