@@ -1,10 +1,15 @@
-name: Our Test Workflow
+name: Our First Workflow
 on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
       - id: step1
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+      - id: step2
+        run: echo "test=world" >> "$GITHUB_OUTPUT"
+      - id: step3
+        uses: actions/github-script@v7
         with: # Set the secret as an input
-          super_secret: ${{ secrets.AAA }}
-        run: echo "aaaa"
+          super_secret: ${{ secrets.AAAA }}
+        run: echo "$super_secret"
