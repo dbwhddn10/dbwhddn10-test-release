@@ -8,6 +8,7 @@ jobs:
       - id: step1
         run: echo "test=hello" >> "$GITHUB_OUTPUT"
       - id: step2
+        if: true
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - id: step3
         env:
