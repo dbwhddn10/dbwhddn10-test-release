@@ -1,4 +1,4 @@
-name: NPM Publish ~!
+name: npm publish
 on: push
 jobs:
   prepare:
@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        name: Checkout Codes
+        name: checkout codes
         id: checkout
       - uses: actions/github-script@v7
-        name: Get Infomations
+        name: get infomations for availability
         id: get_infos
         with:
           script: |
@@ -45,9 +45,10 @@ jobs:
         with:
           node-version: 21
           registry-url: https://registry.npmjs.org/
+      - run: rm -rf ./dist
       - run: npm i
       - run: npm run build
       - run: cp ./package.json ./package-lock.json ./dist/
       - run: npm publish ./dist --access public --tag ${{needs.prepare.outputs.publishTag}}
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
